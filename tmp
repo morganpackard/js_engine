@@ -1,0 +1,10 @@
+
+
+const mapDispatchToProps = (dispatch) => ({
+  a: (val)=>dispatch(val)
+});
+
+
+const dispatch = (val) => console.log('dispatching ' + val);
+
+

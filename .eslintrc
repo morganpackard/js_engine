@@ -1,0 +1,229 @@
+/**
+ *
+ * Configuration for eslint
+ *
+ * NOTE: When modifying ensure that changes are reflected in the strict settings file found in grunt_tasks/eslint/.strict_eslintrc
+ * For release process and additional notes visit https://kb.wayfair.com/kbnode/eslint-configuration
+ *
+ * Dev boxes are running ESLint version 2.10.2
+ *
+ */
+{
+  "env": {
+    "browser": false,
+    "es6": true,
+    "amd": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true,
+      "generators": false,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "globals": {
+    "console",
+    "YUI_config": true,
+    "Y": true,
+    "YUI": true
+  },
+  "rulePaths": ["grunt_tasks/eslint/rules"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:jsx-a11y/recommended"],
+  "plugins": ["react", "jsx-a11y"],
+  "rules": {
+    // fixable styles
+    "strict": [2],
+    "indent": [1, 2, {"SwitchCase": 1}], // specify tab or space width for your code (fixable)
+    "prefer-underscore-utilities": [1],
+    "js-dash-class-selectors": [1],
+    "no-jquery-is-checked": [1],
+    "jquery-on-dom-ready": [1],
+    "quotes": [2, "single"], // specify whether backticks, double or single quotes should be used (fixable)
+    "semi": [2, "always"], // require or disallow use of semicolons instead of ASI (fixable)
+    "eqeqeq": [2, "allow-null"], // require the use of === and !== (fixable)
+    "comma-spacing": [1, {
+      "before": false,
+      "after": true
+    }], // requires space after comma but not before (fixable)
+    "eol-last": [1], // require newline at end of file (fixable)
+    "no-spaced-func": [1], // disallow space between function identifier and application (fixable)
+    "no-trailing-spaces": [1], // disallow trailing whitespace at the end of lines (fixable)
+    // "object-curly-spacing": [1, "never"], // require or disallow padding inside curly braces (fixable)
+    "keyword-spacing": [1, {
+      "before": true,
+      "after": true
+    }], // require a space before and after certain keywords (fixable)
+    "space-before-blocks": [1, "always"], // require or disallow a space before blocks (fixable)
+    "space-before-function-paren": [1, "never"], // require or disallow a space before function opening parenthesis (fixable)
+    "space-infix-ops": [1], // require spaces around operators (fixable)
+    "no-extra-semi": [1], // disallow unnecessary semicolons (recommended) (fixable)
+    "no-multi-spaces": [1], // disallow use of multiple spaces (fixable)
+    "array-bracket-spacing": [1, "never"], // enforce spacing inside array brackets (fixable)
+    "block-spacing": [1, "always"], // disallow or enforce spaces inside of single line blocks (fixable)
+    "computed-property-spacing": [1, "never"], // require or disallow padding inside computed properties (fixable)
+    "space-unary-ops": [1, {
+      "words": true,
+      "nonwords": false
+    }], // require or disallow spaces before/after unary operators (fixable)
+
+    // non-fixable styles
+    "no-dollar-prefixed-literals": [1],
+    "prefer-get-set-deep": [1],
+    "prefer-wf-ajax": [1],
+    "scope-capture-check": [1],
+    "curly": [2], // specify curly brace conventions for all control statements
+    "camelcase": [2, {
+      "properties": "never"
+    }], // require camel case vars but not properties
+    "comma-style": [2, "last"], // require comma last on a line
+    "comma-dangle": [1],
+    "no-extra-boolean-cast": [1],
+    "spaced-comment": [1, "always"], // require or disallow a space immediately following the // or /* in a comment
+    "new-parens": [2], // disallow the omission of parentheses when invoking a constructor with no arguments
+    "no-lonely-if": [1], // disallow if as the only statement in an else block
+    "no-mixed-spaces-and-tabs": [2, "smart-tabs"], // disallow mixed spaces and tabs for indentation (recommended)
+    "no-new-object": [1], // disallow the use of the Object constructor
+    "wrap-iife": [1, "any"], // require IIFEs to be wrapped in parentheses
+    "key-spacing": [1], // enforces spacing around the colon in object literal properties
+    "operator-linebreak": [1, "after"], // enforces a particular operator line break style
+    "quote-props": [2, "as-needed", {
+      "keywords": true,
+      "unnecessary": false
+    }],
+
+    // code
+    "no-empty-pattern": [2], // disallow use of empty destructuring patterns
+    "no-empty": [0],
+    "no-eval": [2], // disallow use of eval()
+    "no-implied-eval": [2], // disallow use of eval()-like methods
+    "no-labels": [2], // disallow use of labeled statements
+    "no-lone-blocks": [2], // disallow unnecessary nested blocks
+    "no-native-reassign": [2], // disallow reassignments of native objects
+    "no-new-func": [2], // disallow use of new operator for Function object
+    "no-redeclare": [2], // disallow declaring the same variable more then once
+    "no-self-compare": [2], // disallow comparisons where both sides are exactly the same (off by default)
+    "no-sequences": [0], // disallow use of comma operator
+    "no-throw-literal": [0], // Restrict what can be thrown as an exception
+    "no-unused-expressions": [1, {"allowTernary": true}], // disallow usage of expressions in statement position
+    "no-useless-call": [1], // disallow unnecessary .call() and .apply()
+    "max-nested-callbacks": [1, 5], // specify the maximum depth callbacks can be nested
+
+    // variables
+    "no-catch-shadow": 2, // disallow the catch clause parameter name being the same as a variable in the outer scope (off by default in the node environment)
+    "no-label-var": 2, // disallow labels that share a name with a variable
+    "no-shadow-restricted-names": 2, // disallow shadowing of names such as arguments
+    "no-undef": 2, // disallow use of undeclared variables unless mentioned in a /*global */ block
+    "no-undef-init": 2, // disallow use of undefined when initializing variables
+    "no-unused-vars": [1, {
+      "vars": "local",
+      "args": "after-used"
+    }], //  disallow declaration of variables that are not used in the code (recommended)
+    "no-useless-concat": [1], // disallow unnecessary concatenation of literals or template literals
+    "no-undefined": 1, // disallow use of undefined variable (off by default)
+    "complexity": [1, 11], // specify the maximum cyclomatic complexity allowed in a program (off by default)
+    "consistent-return": [1], // require return statements to either always or never specify values
+    "no-console": [0], // disallow use of console (off by default in the node environment)
+    "dot-notation": [1], // encourages use of dot notation whenever possible
+    "no-caller": [1], // disallow use of arguments.caller or arguments.callee
+    "no-extra-bind": [1], // disallow unnecessary function binding
+    "no-new-wrappers": [1], // disallows creating new instances of String, Number, and Boolean
+    "no-octal": [1], // disallow use of octal literals
+    "no-octal-escape": [1], // disallow use of octal escape sequences in string literals, such as var foo = "Copyright \251";
+    "no-proto": [1], // disallow usage of __proto__ property
+    "no-script-url": [1], // disallow use of javascript: urls.
+    "no-void": [1], // disallow use of the void operator
+    "no-with": [1], // disallow use of the with statement
+    "radix": [2], // require use of the second argument for parseInt() (off by default)
+    "new-cap": [1, {"capIsNewExceptions": ["Deferred", "DataTable"]}], // require a capital letter for constructors
+    "no-unneeded-ternary": [1], // disallow the use of ternary operators when a simpler alternative exists
+    "no-fallthrough": [1],
+    "no-unreachable": [1],
+    "no-self-assign": [1],
+    "no-unexpected-multiline": [1],
+    "no-inline-comments": [0], // disallow inline comments after code
+
+    /* SOME DAY */
+    "no-multi-str": [0], // disallow use of multiline strings
+    "no-use-before-define": 0, // disallow use of variables before they are defined
+    "brace-style": [0, "1tbs", {
+      "allowSingleLine": true
+    }], // one true brace style but allow start and end on single line
+    "consistent-this": [0, "self"], // requre "this" alias to be "self"
+    "linebreak-style": 0, // disallow mixed 'LF' and 'CRLF' as linebreaks
+    "prefer-rest-params": [1],
+    "prefer-const": [1, {
+      "destructuring": "any",
+      "ignoreReadBeforeAssign": true
+    }],
+    "no-useless-constructor": [2],
+    "no-iterator": [2],
+    "no-dupe-class-members": [2],
+    "arrow-spacing": [2, { "before": true, "after": true }],
+    "constructor-super": [2],
+    "no-class-assign": [2],
+    "no-const-assign": [2],
+    "no-new-symbol": [2],
+    "no-this-before-super": [2],
+    "no-useless-computed-key": [2],
+    "prefer-template": [0],
+    "arrow-body-style": [0, "as-needed"],
+    "no-confusing-arrow": [0, {
+      "allowParens": true
+    }],
+
+    /* REACT plugin rules (https://github.com/yannickcr/eslint-plugin-react/) */
+    "react/forbid-component-props": [2], // Forbid certain props on Components
+    "react/forbid-prop-types": [2,  {"forbid":["any"]}], // Forbid certain propTypes
+    "react/jsx-boolean-value": [2, "never"], // Enforce boolean attributes notation in JSX (fixable)
+    "react/jsx-closing-bracket-location": [2], // Validate closing bracket location in JSX (fixable)
+    "react/jsx-first-prop-new-line": [2, "multiline"], // Enforce position of the first prop in JSX (fixable)
+    "react/jsx-indent-props": [2, 2], // Validate props indentation in JSX (fixable)
+    "react/jsx-indent": [2, 2], // Validate JSX indentation (fixable)
+    "react/jsx-key": [2], // Validate JSX has key prop when in array or iterator
+    "react/jsx-max-props-per-line": [2, { "when": "multiline" }], // Limit maximum of props on a single line in JSX
+    "react/jsx-no-bind": [2, {"ignoreRefs": true, "allowArrowFunctions": true}], // Prevent usage of .bind() and arrow functions in JSX props
+    "react/jsx-no-comment-textnodes": [2], // Prevent comments from being inserted as text nodes
+    "react/jsx-no-target-blank": [2], // Prevent usage of unsafe target='_blank'
+    "react/jsx-pascal-case": [2], // Enforce PascalCase for user-defined JSX components
+    "react/jsx-space-before-closing": [2], // Validate spacing before closing bracket in JSX (fixable)
+    "react/jsx-tag-spacing": [2, {
+      "closingSlash": "never",
+      "beforeSelfClosing": "always",
+      "afterOpening": "never"
+    }], // Validate whitespace in and around the JSX opening and closing brackets (fixable)
+    "react/jsx-wrap-multilines": [2], // Prevent missing parentheses around multilines JSX (fixable)
+    "react/no-array-index-key": [2], // Prevent using Array index in key props
+    "react/no-children-prop": [2], // Prevent passing children as props
+    "react/no-string-refs": [2], // Prevent using string references in ref attribute.
+    "react/no-unescaped-entities": [2], // Prevent invalid characters from appearing in markup
+    "react/no-unused-prop-types": [2], // Prevent definitions of unused prop types
+    "react/prefer-es6-class": [2, "always"], // Enforce ES5 or ES6 class for React Components
+    "react/prefer-stateless-function": [2, { "ignorePureComponents": true }], // Enforce stateless React Components to be written as a pure function
+    "react/self-closing-comp": [2], // Prevent extra closing tags for components without children (fixable)
+    "react/sort-comp": [2], // Enforce component methods order
+    // something in stores calls document.createElement which breaks parsing with this rule:
+    // "react/void-dom-elements-no-children": [2], // Prevent void DOM elements (e.g. <img />, <br />) from receiving children
+
+    /* Excluded React Rules */
+    "react/no-danger-with-children": [0], // Prevent problem with children and props.dangerouslySetInnerHTML
+    "react/no-danger": [0], // Prevent usage of dangerous JSX properties
+    "react/no-multi-comp": [0], // Prevent multiple component definition per file
+    "react/forbid-foreign-prop-types": [0], // Forbid foreign propTypes
+    "react/jsx-curly-spacing": [0, "never"], // Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
+    "react/jsx-equals-spacing": [0, "never"], // Enforce or disallow spaces around equal signs in JSX attributes (fixable)
+    "react/jsx-filename-extension": [0], // Restrict file extensions that may contain JSX
+    "react/jsx-handler-names": [0], // Enforce event handler naming conventions in JSX
+    "react/jsx-no-literals": [0], // Prevent usage of unwrapped JSX strings
+    "react/jsx-sort-props": [0], // Enforce props alphabetical sorting
+    "react/no-set-state": [0], // Prevent usage of setState
+    "react/require-default-props": [0], // Enforce a defaultProps definition for every prop that is not a required prop
+    "react/require-optimization": [0], // Enforce React components to have a shouldComponentUpdate method
+    "react/sort-prop-types": [0], // Enforce propTypes declarations alphabetical sorting
+    "react/style-prop-object": [0], // Enforce style prop value being an object
+
+    "jsx-a11y/no-autofocus": [1], // Set the no-autofocus rule to just a warning
+    "jsx-a11y/no-onchange": [1], // Set the no-onchange rule to just a warning
+    "jsx-a11y/anchor-has-content": [0] // Anchor tags must have content (break while using our lnrs() helper)
+  }
+}
